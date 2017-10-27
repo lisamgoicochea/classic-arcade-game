@@ -6,4 +6,4 @@ Your **goal** is to collect as many jewels as you can before crossing over to th
 
 **Controls** : Left, Right Up, Down arrow keys
 
-**Goal** Save the princess and grab a gem along the way!
+**Goal** : Save the princess and grab a gem along the way!
