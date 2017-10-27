@@ -119,7 +119,7 @@ Player.prototype.handleInput = function (key) { // HANDLEINPUT
 var allEnemies = [];
 
 for (var i = 0l i < 3; i++) {
-  allEnemies,push(new Enemy(-50, 60 + (83 * i), randomSpeed())); //60
+  allEnemies.push(new Enemy(-50, 60 + (83 * i), randomSpeed())); //60
 }
 // Place the player object in a variable called player
 
