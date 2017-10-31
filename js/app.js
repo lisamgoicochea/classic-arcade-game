@@ -1,5 +1,7 @@
 // github: danielmo, dheeraja123
 
+// next time try object inheritance (DRY - Don't Repeat Yourself)
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -33,7 +35,7 @@ Enemy.prototype.update = function(dt) {
     }
 };
 
-  function randomSpeed(min, max) {
+function randomSpeed(min, max) { // fixed the indentation
     min = 50;
     max = 400;
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -78,7 +80,7 @@ Player.prototype.handleInput = function (key) { // HANDLEINPUT
     if (this.x === 0) {
       this.x = 0;
     } else {
-      this.x -= 100;
+      this.x -= 101;
       console.log("left", this.x, this.y);
     }
     break;
@@ -87,7 +89,7 @@ Player.prototype.handleInput = function (key) { // HANDLEINPUT
     if (this.x === 400) {
       this.x += 400;
     } else {
-      this.x += 100;
+      this.x += 101;
       console.log("right", this.x, this.y);
     }
     break;
@@ -118,8 +120,8 @@ Player.prototype.handleInput = function (key) { // HANDLEINPUT
 
 var allEnemies = [];
 
-for (var i = 0l i < 3; i++) {
-  allEnemies,push(new Enemy(-50, 60 + (83 * i), randomSpeed())); //60
+for (var i = 0; i < 3; i++) { // ok so how did i TOTALLY miss I had an l instead of a semicolon here lolol
+  allEnemies.push(new Enemy(-50, 60 + (83 * i), randomSpeed())); //60
 }
 // Place the player object in a variable called player
 
@@ -191,12 +193,15 @@ this.y = 303; // vertical location reset
 };
 
 // user score increase when player collides with a star
-Player.prototype.collection = function( {
+Player.prototype.collection = function() {
   if (this.collide(star)) {
     this.score =+ 5;
   }
 };
 
+var Star = function () { // defining star ? is this similar to line 166?
+  // here goes.... something, i think
+}
 // star relocation after collection
 Star.prototype.collection = function() {
   if (this.collide(player)) {
@@ -206,7 +211,7 @@ Star.prototype.collection = function() {
 };
 
 // document ????
-Player.prototype.drawText = function() {
+Player.prototype.drawText = function () {
   ctx.fillStyle = '#333333';
   ctx.font = '30px Boogaloo';
   ctx.clearRect(0, 0, 160, 40);
