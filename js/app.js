@@ -108,9 +108,9 @@ Player.prototype.reset = function() {
 // Place all enemy objects in an array called allEnemies
 
 var allEnemies = [
-  bug1 = new Enemy(0, 100, 100);
-  bug2 = new Enemy(0, 240, 140);
-  bug3 = new Enemy(0, 180, 140);
+  bug1 = new Enemy(0, 100, 100),
+  bug2 = new Enemy(0, 240, 140),
+  bug3 = new Enemy(0, 180, 140),
 ];
 
 // Place the player object in a variable called player
