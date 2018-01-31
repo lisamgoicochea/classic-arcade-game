@@ -15,7 +15,7 @@ var Enemy = function (x, y, speed) {
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;// multiplication by the dt parameter, same speed for all computers
-    
+
 
     if (this.x > 480) { // if and when a bug reaches the right edge
         this.x = -123; // new bug appears on left edge
@@ -24,8 +24,8 @@ Enemy.prototype.update = function (dt) {
 
   if (player.x < this.x + 60 &&
       player.x + 27 > this.x &&
-      player.y < this.y + 25 &&
-      30 + player.y > this.y) {
+      player.y < this.y + 24 &&
+      34 + player.y > this.y) {
       player.x = 204;
       player.y = 404;
   }
@@ -38,7 +38,7 @@ Enemy.prototype.render = function() {
 
 // Now write your own player class
 //This class requires and update(), render() and a handleInput() method.
-var Player = function(x, y, speed) {
+var Player = function (x, y, speed) {
     this.x = x;
     this.y = y;
     this.sprite = 'images/char-princess-girl.png';
@@ -47,36 +47,31 @@ var Player = function(x, y, speed) {
 
 // This class requires an update(), render() and
 // a handleInput() method.
-
-// when reaching water, colliding with bug, collecting a star
 Player.prototype.update = function (dt) { // UPDATE
-    'use strict';
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-if (this.y > 384) {
+  if (this.y > 384) {
     this.y = 384;
-}
+  }
 
-if (this.x > 404) {
+  if (this.x > 404) {
     this.x = 400;
-}
+  }
 
-if (this.x < 0) {
+  if (this.x < 0) {
     this.x = 0;
-}
+  }
 
-if (this.y < 0) {
+  if (this.y < 0) {
   this.x = 204;
   this.y = 284;
-}
+  }
+
+};
 // player is drawn on the screen
-Player.prototype.render = function() { // RENDER
+Player.prototype.render = function () { // RENDER
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 Player.prototype.handleInput = function (key) { // HANDLEINPUT
-  'use strict';
   switch (key) {
     case 'left':
     this.x -= 103;
@@ -112,7 +107,6 @@ if (this.y < 0) {
 };
 
 Enemy.prototype.checkCollision = function() {
-  'use strict';
   if (this.x < player.x + player.width &&
     this.x + this.width > player.x &&
     player.y + player.height > this.y &&
@@ -122,7 +116,6 @@ Enemy.prototype.checkCollision = function() {
 };
 
 Player.prototype.reset = function() {
-  'use strict';
   this.x = 202;
   this.y = 404;
 };
@@ -130,21 +123,21 @@ Player.prototype.reset = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 
-var allEnemies = [
-  bug1 = new Enemy(0, 100, 100),
-  bug2 = new Enemy(0, 240, 140),
-  bug3 = new Enemy(0, 180, 140),
-];
+var allEnemies = [];
 
 // Place the player object in a variable called player
-var player = new Player(202,388);
-
+var player = new Player(202,388, 84);
 var enemyPosition = [50, 150, 210];
 var enemy;
 
+enemyPosition.forEach (function (posY) {
+  enemy = new Enemy(0, posY, 100 + Math.floor(Math.random() * 500));
+  allEnemies.push(enemy);
+});
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function (e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
