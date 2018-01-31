@@ -9,9 +9,8 @@ Your **goal** is to collect as many jewels as you can before crossing over to th
 
 **How to Play** : Left, Right Up, Down arrow keys
 
+**How to Run** : Load index.html in your browser of choice!
+
 **Code** : https://github.com/lisamgoicochea/classic-arcade-game
 
 Enjoy!
-
-
-
